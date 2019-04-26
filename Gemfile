@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Flexible authentication solution for Rails with Warden
 gem 'devise'
+# Advanced seed data handling for Rails, combining the best practices of several methods together.
+gem 'seed-fu', '~> 2.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
