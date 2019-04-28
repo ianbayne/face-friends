@@ -14,9 +14,7 @@ private
   end
 
   def destroy_inverse_friendship
-    Friendship.find_by(user: friend, friend: user).destroy
-    Friendship.find_by(friend: user, user: friend).destroy
-  rescue NoMethodError => e
-    # Swallow the error if there is one
+    inverse_friendship = Friendship.find_by(user: friend, friend: user)
+    inverse_friendship.destroy if inverse_friendship
   end
 end
