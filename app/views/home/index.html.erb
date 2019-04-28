@@ -11,7 +11,7 @@
 
 <% @posts.each do |post| %>
   <div>
-    <p><%= post.created_at %></p>
+    <p><%= "#{post.user.full_name}" %> posted on <%= post.created_at.strftime('%A, %B %d, %Y') %> at <%= post.created_at.strftime('%I:%M:%S %p') %>:</p>
     <%= image_tag post.image_url unless post.image_data.nil? %>
     <p><%= post.body %></p>
     <%= link_to('Delete post', post_path(post), method: :delete, data: {confirm: "Are you sure?"}) if post.user == current_user %>
