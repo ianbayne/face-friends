@@ -1,0 +1,8 @@
+<div>
+  <h2><%= "#{@post.user.full_name}" %> posted on <%= @post.created_at.strftime('%A, %B %d, %Y') %> at <%= @post.created_at.strftime('%I:%M:%S %p') %>:</h2>
+  <%= image_tag @post.image_url unless @post.image_data.nil? %>
+  <p><%= @post.body %></p>
+  <%= link_to('Delete post', post_path(@post), method: :delete, data: {confirm: "Are you sure?"}) if @post.user == current_user %>
+</div>
+
+<%= link_to 'Back', root_path %>
