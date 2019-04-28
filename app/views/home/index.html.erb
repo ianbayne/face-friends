@@ -4,6 +4,7 @@
 <% @posts.each do |post| %>
   <div>
     <p><%= post.created_at %></p>
+    <%= image_tag post.image_url unless post.image_data.nil? %>
     <p><%= post.body %></p>
   </div>
 <% end %>
