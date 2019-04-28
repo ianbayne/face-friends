@@ -6,10 +6,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @post = @user.posts.build(post_params)
+    user = current_user
+    post = user.posts.build(post_params)
 
-    if @post.save!
+    if post.save!
       redirect_to root_path
     end
   rescue StandardError => e

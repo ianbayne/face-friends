@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :posts, only: [:show, :create, :edit, :update, :destroy]
+  resources :posts, only: [:show, :create, :edit, :update, :destroy] do
+    resources :likes, only: [:create, :destroy]
+  end
 end
