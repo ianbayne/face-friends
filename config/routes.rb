@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  post 'posts/create'
+  resources :posts, only: [:create, :edit, :update, :destroy]
 end

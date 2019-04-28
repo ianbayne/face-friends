@@ -1,9 +1,8 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!
+  before_action :new_post, only: [:index]
 
   def index
-    @post = Post.new
-
     posts_ids = []
     own_posts_ids = current_user.posts.pluck(:id)
     posts_ids << own_posts_ids
@@ -14,6 +13,14 @@ class HomeController < ApplicationController
 
     posts_ids = posts_ids.flatten
 
-    @posts = Post.where(id: posts_ids).order(created_at: :desc)
+    @posts = Post.where(id: posts_ids)
+                 .order(created_at: :desc)
+                 .includes(:user)
+  end
+
+private
+
+  def new_post
+    @post = Post.new
   end
 end

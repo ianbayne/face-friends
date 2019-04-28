@@ -1,7 +1,8 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
 
-<%= form_for @post, url: posts_create_path do |f| %>
+<h1>Posts</h1>
+
+<%= form_for @post, url: posts_path do |f| %>
   <%= f.hidden_field :image, value: @post.cached_image_data %>
   <%= f.file_field :image %>
   <%= f.text_area :body %>
@@ -13,7 +14,7 @@
     <p><%= post.created_at %></p>
     <%= image_tag post.image_url unless post.image_data.nil? %>
     <p><%= post.body %></p>
+    <%= link_to('Delete post', post_path(post), method: :delete, data: {confirm: "Are you sure?"}) if post.user == current_user %>
   </div>
 <% end %>
 
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
