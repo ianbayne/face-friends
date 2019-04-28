@@ -2,6 +2,8 @@ class HomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @post = Post.new
+
     posts_ids = []
     own_posts_ids = current_user.posts.pluck(:id)
     posts_ids << own_posts_ids

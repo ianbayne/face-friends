@@ -1,6 +1,13 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
+<%= form_for @post, url: posts_create_path do |f| %>
+  <%= f.hidden_field :image, value: @post.cached_image_data %>
+  <%= f.file_field :image %>
+  <%= f.text_area :body %>
+  <%= f.submit %>
+<% end %>
+
 <% @posts.each do |post| %>
   <div>
     <p><%= post.created_at %></p>
