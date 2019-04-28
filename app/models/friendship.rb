@@ -5,6 +5,11 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: User.name
 
+  def self.mutual_friendships(user_a, user_b)
+    Friendship.where(user: user_a, friend: user_b)
+      .or(Friendship.where(user: user_b, friend: user_a))
+  end
+
 private
 
   def create_inverse_friendship
