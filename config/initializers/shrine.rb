@@ -11,8 +11,8 @@ if Rails.env.development?
   require 'shrine/storage/file_system'
 
   Shrine.storages = {
-    cache: Shrine::Storage::FileSystem.new('tmp', prefix: 'cache'),
-    store: Shrine::Storage::FileSystem.new('tmp', prefix: 'store')
+    cache: Shrine::Storage::FileSystem.new('public', prefix: 'cache'),
+    store: Shrine::Storage::FileSystem.new('public', prefix: 'store')
   }
 elsif Rails.env.test?
   require 'shrine/storage/memory'
