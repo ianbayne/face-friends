@@ -24,6 +24,7 @@ gem 'devise'
 # Upload images to Amazon S3
 gem 'aws-sdk-s3'
 gem 'shrine'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
