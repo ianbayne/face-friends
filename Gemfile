@@ -21,6 +21,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Flexible authentication solution for Rails with Warden
 gem 'devise'
+# Upload images to Amazon S3
+gem 'aws-sdk-s3'
+gem 'shrine'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

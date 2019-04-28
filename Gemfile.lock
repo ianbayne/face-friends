@@ -47,6 +47,22 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    aws-eventstream (1.0.3)
+    aws-partitions (1.154.0)
+    aws-sdk-core (3.48.6)
+      aws-eventstream (~> 1.0, >= 1.0.2)
+      aws-partitions (~> 1.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.17.0)
+      aws-sdk-core (~> 3, >= 3.48.2)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.36.1)
+      aws-sdk-core (~> 3, >= 3.48.2)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.0)
+    aws-sigv4 (1.1.0)
+      aws-eventstream (~> 1.0, >= 1.0.2)
     bcrypt (3.1.12)
     bindex (0.7.0)
     bootsnap (1.4.3)
@@ -67,6 +83,7 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     concurrent-ruby (1.1.5)
+    content_disposition (1.0.0)
     crass (1.0.4)
     devise (4.6.2)
       bcrypt (~> 3.0)
@@ -74,6 +91,8 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    down (4.8.0)
+      addressable (~> 2.5)
     erubi (1.8.0)
     execjs (2.7.0)
     faker (1.9.3)
@@ -87,6 +106,7 @@ GEM
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
+    jmespath (1.4.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -166,6 +186,9 @@ GEM
     selenium-webdriver (3.141.5926)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
+    shrine (2.16.0)
+      content_disposition (~> 1.0)
+      down (~> 4.1)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -205,6 +228,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
@@ -219,6 +243,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   seed-fu (~> 2.3)
   selenium-webdriver
+  shrine
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
