@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     like = current_user.likes.build(post: @post)
 
     if like.save!
-      redirect_to post_path(@post)
+      redirect_back(fallback_location: root_path)
     end
   rescue StandardError => e
     puts e
@@ -15,7 +15,7 @@ class LikesController < ApplicationController
     like = Like.find_by(post: @post, user: current_user)
 
     if like.destroy!
-      redirect_to post_path(@post)
+      redirect_back(fallback_location: root_path)
     end
   rescue StandardError =>
     e

@@ -10,13 +10,43 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <%= link_to post_path(post) do %>
-    <div>
-      <p><%= "#{post.user.full_name}" %> posted on <%= post.created_at.strftime('%A, %B %d, %Y') %> at <%= post.created_at.strftime('%I:%M:%S %p') %>:</p>
+  <div>
+    <%= link_to post_path(post) do %>
+      <p><%= "#{post.user.full_name}" %> posted on <%= post.date_created_at %> at <%= post.time_created_at %>:</p>
+
       <%= image_tag post.image_url unless post.image_data.nil? %>
+
       <p><%= post.body %></p>
-      <%= link_to('Delete post', post_path(post), method: :delete, data: {confirm: "Are you sure?"}) if post.user == current_user %>
-    </div>
-  <% end %>
+    <% end %>
+
+    <% if post.user == current_user %>
+      <%= link_to(
+            'Delete post',
+            post_path(post),
+            method: :delete,
+            data: {confirm: "Are you sure?"}
+          )
+      %>
+    <% else %>
+      <% if post.likes.where(user: current_user).present? %>
+        <%= link_to(
+              'Unlike post',
+              post_like_path(
+                id: post.likes.find_by(user: current_user).id,
+                post_id: post.id
+              ),
+              method: :delete
+            )
+        %>
+      <% else %>
+        <%= link_to(
+              'Like post',
+              post_likes_path(post),
+              method: :post
+            )
+        %>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 
