@@ -1,9 +1,8 @@
-class Post < ApplicationRecord
+class Comment < ApplicationRecord
   include ImageUploader::Attachment.new(:image)
 
   belongs_to :user
-  has_many :likes, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  belongs_to :post
 
   def date_created_at
     created_at.strftime('%A, %B %d, %Y')

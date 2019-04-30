@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :new_post, only: [:index]
+  before_action :new_comment, only: [:index, :show]
 
   def index
     posts_ids = []
@@ -15,7 +16,7 @@ class PostsController < ApplicationController
 
     @posts = Post.where(id: posts_ids)
                  .order(created_at: :desc)
-                 .includes(:user, :likes)
+                 .includes(:user, :likes, :comments)
   end
 
   def show
@@ -49,6 +50,10 @@ private
 
   def new_post
     @post = Post.new
+  end
+
+  def new_comment
+    @comment = Comment.new
   end
 
   def post_params
