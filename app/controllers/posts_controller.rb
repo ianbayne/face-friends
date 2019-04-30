@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
     @posts = Post.where(id: posts_ids)
                  .order(created_at: :desc)
-                 .includes(:user)
+                 .includes(:user, :likes)
   end
 
   def show

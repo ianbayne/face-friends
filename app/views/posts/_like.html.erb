@@ -1,3 +1,7 @@
+<% if post.likes.any? %>
+  <p>This post has been liked</p>
+<% end %>
+
 <%= link_to(
       'Like post',
       post_likes_path(post),

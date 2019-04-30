@@ -1,3 +1,7 @@
+<% if post.likes.any? %>
+  <p>This post has been liked</p>
+<% end %>
+
 <%= link_to(
       'Unlike post',
       post_like_path(post_id: post, id: post.likes.find_by(user: current_user).id),
