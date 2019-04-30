@@ -28,24 +28,13 @@
           )
       %>
     <% else %>
-      <% if post.likes.where(user: current_user).present? %>
-        <%= link_to(
-              'Unlike post',
-              post_like_path(
-                id: post.likes.find_by(user: current_user).id,
-                post_id: post.id
-              ),
-              method: :delete
-            )
-        %>
-      <% else %>
-        <%= link_to(
-              'Like post',
-              post_likes_path(post),
-              method: :post
-            )
-        %>
-      <% end %>
+      <div id="like_or_unlike_<%= post.id %>">
+        <% if post.likes.where(user: current_user).present? %>
+          <%= render 'posts/unlike', post: post %>
+        <% else %>
+          <%= render 'posts/like', post: post %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 <% end %>

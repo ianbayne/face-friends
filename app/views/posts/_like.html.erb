@@ -1,0 +1,9 @@
+<%= link_to(
+      'Like post',
+      post_likes_path(post),
+      {
+        method: :post,
+        remote: true
+      }
+    )
+%>

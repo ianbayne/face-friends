@@ -1,0 +1,9 @@
+<%= link_to(
+      'Unlike post',
+      post_like_path(post_id: post, id: post.likes.find_by(user: current_user).id),
+      {
+        method: :delete,
+        remote: true
+      }
+    )
+%>
