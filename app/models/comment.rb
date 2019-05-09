@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
 
   belongs_to :user
   belongs_to :post
+  has_many   :likes, as: :likeable, dependent: :destroy
 
   def date_created_at
     created_at.strftime('%A, %B %d, %Y')
