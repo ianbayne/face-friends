@@ -1,0 +1,46 @@
+<h1><%= @user.full_name %></h1>
+<% unless @user.posts.empty? %>
+  <% @user.posts.includes(:comments, :likes).each do |post| %>
+    <div>
+      <%= link_to post_path(post) do %>
+        <p><%= "#{post.user.full_name}" %> posted on <%= post.date_created_at %> at <%= post.time_created_at %>:</p>
+
+        <%= image_tag post.image_url unless post.image_data.nil? %>
+
+        <p><%= post.body %></p>
+      <% end %>
+
+      <% if post.user == current_user %>
+        <%= link_to(
+              'Delete post',
+              post_path(post),
+              method: :delete,
+              data: {confirm: "Are you sure?"}
+            )
+        %>
+      <% else %>
+        <div id="like_or_unlike_<%= post.id %>">
+          <% if post.likes.where(user: current_user).present? %>
+            <%= render 'posts/unlike', post: post %>
+          <% else %>
+            <%= render 'posts/like', post: post %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <% if post.comments.any? %>
+        <p>This post has comments</p>
+      <% end %>
+      <%= form_for @comment, url: post_comments_path(post) do |f| %>
+        <%= f.hidden_field :image, value: post.cached_image_data %>
+        <%= f.file_field :image %>
+        <%= f.text_area :body %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= "#{@user.full_name} has no posts" %></p>
+<% end %>
