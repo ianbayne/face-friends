@@ -23,8 +23,8 @@ class LikesController < ApplicationController
         format.js
       end
     end
-  rescue StandardError =>
-    e
+  rescue StandardError => e
+    puts e
   end
 
 private
