@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   before_action :load_post
 
   def create
-    like = current_user.likes.build(post: @post)
+    like = current_user.likes.build(likeable: @post)
 
     if like.save!
       respond_to do |format|
@@ -15,7 +15,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like = Like.find_by(post: @post, user: current_user)
+    like = Like.find_by(likeable: @post, user: current_user)
 
     if like.destroy!
       respond_to do |format|
