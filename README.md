@@ -1,24 +1,12 @@
-# README
+One reason for this project was to get experience with:
+- Using [Shrine] for file attachments
+- Hosting files on AWS
+- Polymorphic relationships
+- The publish-subscribe pattern using [Wisper]
+- At my [day job], we exclusively use [RSpec] for testing; I wanted to get experience with [minitest] as well
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[day job]: http://tacchistudios.com/
+[minitest]: https://github.com/seattlerb/minitest
+[RSpec]: https://github.com/rspec/rspec
+[Shrine]: https://github.com/shrinerb/shrine
+[Wisper]: https://github.com/krisleech/wisper
