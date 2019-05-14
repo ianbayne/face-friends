@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes
   has_many :comments
+  has_many :notifications, dependent: :destroy, foreign_key: :recipient_id
 
   def full_name
     "#{first_name} #{last_name}"

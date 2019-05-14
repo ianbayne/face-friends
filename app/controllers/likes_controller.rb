@@ -1,10 +1,14 @@
 class LikesController < ApplicationController
+  include Wisper::Publisher
+
   before_action :load_post
 
   def create
     like = current_user.likes.build(likeable: @post)
 
     if like.save!
+      publish(:post_liked, @post, current_user, @post.user)
+
       respond_to do |format|
         format.html { redirect_back(fallback_location: root_path) }
         format.js
