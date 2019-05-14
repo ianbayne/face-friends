@@ -8,9 +8,11 @@ class CommentsController < ApplicationController
                                   body: comment_params[:body],
                                   image: comment_params[:image])
 
-    if comment.save
+    if comment.save!
       redirect_back(fallback_location: root_path)
     end
+  rescue StandardError => e
+    puts e
   end
 
   def edit
