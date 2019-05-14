@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     like = current_user.likes.build(likeable: @post)
 
     if like.save!
-      publish(:post_liked, @post, current_user, @post.user)
+      publish(:liked_post, @post, current_user, @post.user)
 
       respond_to do |format|
         format.html { redirect_back(fallback_location: root_path) }

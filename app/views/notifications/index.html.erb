@@ -1,12 +1,12 @@
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
 
 <h1>Notifications</h1>
-<% if @like_notifications.any? %>
+<% if @notifications.any? %>
   <ul>
-  <% @like_notifications.each do |notification| %>
+  <% @notifications.each do |notification| %>
     <li>
       <%= link_to post_path(notification.target) do %>
-        <p><%= notification.actor.full_name %> <%= 'liked' if notification.action == 'liked_post' %> your post <%= notification.target.body %></p>
+        <p><%= notification.actor.full_name %> <%= notification.action %> your post <%= notification.target.body %></p>
       <% end %>
     </li>
   <% end %>

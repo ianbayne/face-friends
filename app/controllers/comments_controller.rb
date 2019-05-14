@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include Wisper::Publisher
+
   before_action :authenticate_user!
 
   def create
@@ -9,6 +11,8 @@ class CommentsController < ApplicationController
                                   image: comment_params[:image])
 
     if comment.save!
+      publish(:commented_on_post, post, current_user, post.user)
+
       redirect_back(fallback_location: root_path)
     end
   rescue StandardError => e
