@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
                                   image: comment_params[:image])
 
     if comment.save!
-      publish(:commented_on_post, post, current_user, post.user)
+      publish(:commented_on_post, post, current_user, post.user) unless
+        current_user == post.user
 
       redirect_back(fallback_location: root_path)
     end
