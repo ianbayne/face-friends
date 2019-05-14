@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   include Wisper::Publisher
 
+  before_action :authenticate_user!
   before_action :load_post
 
   def create
