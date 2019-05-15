@@ -20,7 +20,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+
+    redirect_to root_url, notice: 'Post not found' unless @post
   end
 
   def create
