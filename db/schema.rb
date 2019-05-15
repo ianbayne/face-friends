@@ -39,16 +39,16 @@ ActiveRecord::Schema.define(version: 2019_05_11_134603) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "likeable_id"
+    t.bigint "likeable_id"
     t.string "likeable_type"
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "actor_id"
-    t.integer "target_id"
-    t.integer "recipient_id"
+    t.bigint "actor_id"
+    t.bigint "target_id"
+    t.bigint "recipient_id"
     t.integer "action"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
