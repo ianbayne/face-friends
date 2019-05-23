@@ -1,3 +1,9 @@
+<% unless @user == current_user || current_user.friends.include?(@user) %>
+  <%= button_to 'Add Friend', user_friendship_requests_path(@user), method: :post, remote: true %>
+<% end %>
+
+<%= console %>
+
 <h1><%= @user.full_name %></h1>
 <% unless @user.posts.empty? %>
   <% @user.posts.includes(:comments, :likes).each do |post| %>
@@ -44,3 +50,5 @@
 <% else %>
   <p><%= "#{@user.full_name} has no posts" %></p>
 <% end %>
+
+<%= link_to 'Back', root_path %>

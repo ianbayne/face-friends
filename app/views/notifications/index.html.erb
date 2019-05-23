@@ -5,8 +5,15 @@
   <ul>
   <% @notifications.each do |notification| %>
     <li>
-      <%= link_to post_path(notification.target) do %>
-        <p><%= notification.actor.full_name %> <%= notification.action %> your post <%= notification.target.body %></p>
+      <% if notification.liked_post? %>
+        <%= link_to post_path(Post.find(notification.target_id)) do %>
+          <p><%= notification.actor.full_name %> <%= notification.action %> your post <%= notification.target.body %></p>
+        <% end %>
+      <% elsif notification.commented_on_post? %>
+      <% elsif notification.friend_request? %>
+        <%= link_to friendship_request_path(FriendshipRequest.find(notification.target_id)) do %>
+          <p><%= notification.actor.full_name %> <%= notification.action %></p>
+        <% end %>
       <% end %>
     </li>
   <% end %>

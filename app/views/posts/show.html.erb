@@ -1,6 +1,6 @@
 <div>
   <h2>
-    <%= "#{@post.user.full_name}" %> posted on <%= @post.date_created_at %> at <%= @post.time_created_at %>:
+    <%= link_to "#{@post.user.full_name}", user_path(@post.user) %> posted on <%= @post.date_created_at %> at <%= @post.time_created_at %>:
   </h2>
 
   <%= image_tag @post.image_url unless @post.image_data.nil? %>
