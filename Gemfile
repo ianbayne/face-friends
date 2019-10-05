@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 # Flexible authentication solution for Rails with Warden
-gem 'devise'
+gem 'devise', '4.7.1'
 # Upload images to Amazon S3
 gem 'aws-sdk-s3'
 gem 'shrine'
