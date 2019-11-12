@@ -5,8 +5,9 @@ class Notification < ApplicationRecord
     friend_request:    20
   }
 
-  belongs_to :actor, class_name: User.name
+  belongs_to :actor,     class_name: User.name
   belongs_to :recipient, class_name: User.name
+  belongs_to :target,    class_name: Post.name
 
   def action
     return 'liked' if liked_post?

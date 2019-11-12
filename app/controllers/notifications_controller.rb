@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
 
   def index
     @notifications = current_user.notifications
-                                 .includes(:actor)
+                                 .includes(:actor, :target)
                                  .order('created_at DESC')
   end
 end
