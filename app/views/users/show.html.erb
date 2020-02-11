@@ -2,8 +2,6 @@
   <%= button_to 'Add Friend', user_friendship_requests_path(@user), method: :post, remote: true %>
 <% end %>
 
-<%= console %>
-
 <h1><%= @user.full_name %></h1>
 <% if @user.posts.present? %>
   <% @user.posts.includes(:comments, :likes).each do |post| %>
