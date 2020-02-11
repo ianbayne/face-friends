@@ -5,7 +5,7 @@
 <%= console %>
 
 <h1><%= @user.full_name %></h1>
-<% unless @user.posts.empty? %>
+<% if @user.posts.present? %>
   <% @user.posts.includes(:comments, :likes).each do |post| %>
     <div>
       <%= link_to post_path(post) do %>
@@ -26,7 +26,8 @@
         %>
       <% else %>
         <div id="like_or_unlike_<%= post.id %>">
-          <% if post.likes.where(user: current_user).present? %>
+          <%# if post.likes.where(user: current_user).present? %>
+          <% if post.likes.pluck(:user_id).include?(current_user.id) %>
             <%= render 'posts/unlike', post: post %>
           <% else %>
             <%= render 'posts/like', post: post %>

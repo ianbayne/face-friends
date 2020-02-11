@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     own_posts_ids = current_user.posts.pluck(:id)
     posts_ids << own_posts_ids
 
-    current_user.friends.each do |friend|
+    current_user.friends.includes(:posts).each do |friend|
       posts_ids << friend.posts.pluck(:id)
     end
 
