@@ -37,13 +37,21 @@ group :development do
   gem 'bullet'
   gem 'faker'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Advanced seed data handling for Rails, combining the best practices of several methods together.
   gem 'seed-fu', '~> 2.3'
+  gem 'web-console', '>= 3.3.0'
+
+  # Profiler for your development and production Ruby rack apps.
+  gem 'rack-mini-profiler', require: false
+  # For memory profiling
+  gem 'memory_profiler'
+  # For call-stack profiling flamegraphs
+  gem 'flamegraph'
+  gem 'stackprof'
 end
 
 group :test do
