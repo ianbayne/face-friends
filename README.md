@@ -3,7 +3,6 @@ One reason for this project was to get experience with:
 - Hosting files on AWS
 - Polymorphic relationships
 - The publish-subscribe pattern using [Wisper]
-- At my [day job], we exclusively use [RSpec] for testing; I wanted to get experience with [minitest] as well
 
 [day job]: http://tacchistudios.com/
 [minitest]: https://github.com/seattlerb/minitest
