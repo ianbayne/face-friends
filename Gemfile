@@ -23,7 +23,7 @@ gem 'bootsnap', '1.4.3', require: false
 gem 'devise', '4.7.1'
 # Upload images to Amazon S3
 gem 'aws-sdk-s3', '1.36.1'
-gem 'shrine', '2.16.0'
+gem 'shrine', '3.3.0'
 gem 'figaro', '1.1.1'
 # A micro library providing Ruby objects with Publish-Subscribe capabilities
 gem 'wisper', '2.0.0'
